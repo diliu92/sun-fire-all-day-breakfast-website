@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="sunfire-contact">
+  <template>
+    <style>
+      :host {
+        width: 100%;
+        min-height: calc(100vh - 171px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .map-container {
+        width: calc(100% - 80px);
+        max-width: 800px;
+        height: 300px;
+        margin: 40px 40px 0px 40px;
+        border: 3px #000 solid;
+      }
+
+      .info-container {
+        width: calc(100% - 80px);
+        max-width: 800px;
+        margin: 20px 40px 40px 40px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .column {
+        padding-right: 60px;
+      }
+      .sub-title {
+        font-size: 18px;
+        font-weight: bolder;
+        margin: 20px 0px 5px 0px;
+      }
+      .space-between-container {
+        width: 210px;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+    <div class="map-container">
+      <iframe
+        width="100%"
+        height="100%"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAEgwLVFr5_MFVBBI-09IBl9ZVCx96TAMw
+          &q=Sun+Fire+All+Day+Breakfast,Whitby+ON" allowfullscreen>
+      </iframe>
+    </div>
+    <div class="info-container">
+      <div class="column">
+        <div class="sub-title">Address: </div>
+        <div class="level-1">372 Taunton Rd E #3</div>
+        <div class="level-1">Whitby, ON L1R 0H4</div>
+        <div class="sub-title">Contact Info: </div>
+        <div class="level-1">Phone: <a href="tel:+12898926988">(289) 892-6988</a></div>
+      </div>
+      <div class="column">
+        <div class="sub-title">Hours: </div>
+        <div class="level-1 space-between-container"><span>Monday: </span><span>7:00am - 4:00pm</span></div>
+        <div class="level-1 space-between-container"><span>Tuesday: </span><span>7:00am - 4:00pm</span></div>
+        <div class="level-1 space-between-container"><span>Wednesday: </span><span>7:00am - 4:00pm</span></div>
+        <div class="level-1 space-between-container"><span>Thursday: </span><span>7:00am - 4:00pm</span></div>
+        <div class="level-1 space-between-container"><span>Friday: </span><span>7:00am - 4:00pm</span></div>
+        <div class="level-1 space-between-container"><span>Saturday: </span><span>7:00am - 4:00pm</span></div>
+        <div class="level-1 space-between-container"><span>Sunday: </span><span>7:00am - 4:00pm</span></div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `carousel-component`
+     * responsive carousel component
+     */
+    class SunfireContact extends Polymer.Element {
+      static get is() { return 'sunfire-contact'; }
+      static get properties() {
+        return {
+        };
+      }
+    }
+
+    window.customElements.define(SunfireContact.is, SunfireContact);
+  </script>
+</dom-module>

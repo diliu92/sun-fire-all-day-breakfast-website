@@ -1,0 +1,129 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+
+<link rel="import" href="./carousel-component/carousel-component.html">
+<link rel="import" href="./pages/sunfire-home.html">
+<link rel="import" href="./pages/sunfire-menu.html">
+<link rel="import" href="./pages/sunfire-gallery.html">
+<link rel="import" href="./pages/sunfire-contact.html">
+<link rel="import" href="./menu-component/menu-component.html">
+
+<dom-module id="sunfire-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+        height: 100%;
+      }
+      .header {
+        position: fixed;
+        top: 0px;
+        let: 0px;
+        height: 120px;
+        width: 100%;
+        background-image: linear-gradient(#ffeac4, #ffffff);
+        display: flex;
+        justify-content: center;
+        z-index: 2;
+      }
+      .logo-image {
+        padding: 10px;
+        height: 100px;
+        width: auto;
+      }
+
+      menu-component {
+        position: fixed;
+        top:120px;
+        left: 0px;
+        width: 100%;
+        z-index: 1;
+      }
+
+      iron-pages {
+        margin-top:171px;
+        height: calc(100% - 175px);
+        background-image: linear-gradient(#ffffff, #cee3ba);
+        z-index: 0;
+      }
+
+      @media (max-width: 500px) {
+        .header {
+          height: 70px;
+        }
+        .logo-image {
+          height: 50px
+        }
+        menu-component {
+          top: 70px;
+        }
+        iron-pages {
+          margin-top:121px;
+        }
+      }
+    </style>
+
+    <app-location route="{{route}}"></app-location>
+    <app-route
+      route="{{route}}"
+      pattern="/:page"
+      data="{{routeData}}"
+      tail="{{subroute}}">
+    </app-route>
+
+    <div class="header">
+      <img class="logo-image" src="../images/logo.png" alt="logo">
+    </div>
+
+    <menu-component selected=[[page]]></menu-component>
+
+    <iron-pages
+      selected=[[page]]
+      attr-for-selected="name">
+      <sunfire-home name='home'></sunfire-home>
+      <sunfire-menu name='menu'></sunfire-menu>
+      <sunfire-gallery name='gallery'></sunfire-gallery>
+      <sunfire-contact name='contact'></sunfire-contact>
+    </iron-pages>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class SunfireApp extends Polymer.Element {
+      static get is() { return 'sunfire-app'; }
+      static get properties() {
+        return {
+          page: {
+            type: String,
+            reflectToAttribute: true
+          },
+          rootPath: String,
+          routeData: Object,
+          subroute: String
+        };
+      }
+      static get observers() {
+        return [
+          '_routePageChanged(routeData.page)',
+        ];
+      }
+
+      _routePageChanged(page) {
+        // If no page was found in the route data, page will be an empty string.
+        // Default to 'home' in that case.
+        if (!page || ['home', 'menu', 'gallery', 'contact'].indexOf(page) < 0) {
+          this.page = 'home';
+        } else {
+          this.page = page;
+        }
+      }
+    }
+
+    window.customElements.define(SunfireApp.is, SunfireApp);
+  </script>
+</dom-module>

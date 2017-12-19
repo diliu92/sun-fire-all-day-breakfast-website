@@ -1,0 +1,55 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+  <link rel="import" href="../carousel-component/carousel-component.html">
+
+<dom-module id="sunfire-home">
+  <template>
+    <style>
+      :host {
+        width: 100%;
+        min-height: calc(100vh - 171px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      carousel-component {
+        width: calc(100% - 40px);
+        max-width: 800px;
+        margin: 40px 20px;
+        contain: content;
+      }
+
+      carousel-component::after {
+        display: block;
+        content: '';
+        padding-top: 75%; /* 4:3 = height is 75% of width */
+      }
+
+      carousel-component img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+    <carousel-component>
+      <img data-src="../../images/home/home-1.jpg">
+      <img data-src="../../images/home/home-2.jpg">
+      <img data-src="../../images/home/home-3.jpg">
+    </carousel-component>
+  </template>
+
+  <script>
+    /**
+     * `carousel-component`
+     * responsive carousel component
+     */
+    class SunfireHome extends Polymer.Element {
+      static get is() { return 'sunfire-home'; }
+      static get properties() {
+        return {};
+      }
+    }
+
+    window.customElements.define(SunfireHome.is, SunfireHome);
+  </script>
+</dom-module>

@@ -1,0 +1,59 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="sunfire-menu">
+  <template>
+    <style>
+      :host {
+        width: 100%;
+        min-height: calc(100vh - 171px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      carousel-component {
+        width: calc(100% - 40px);
+        max-width: 800px;
+        margin: 40px 20px;
+        contain: content;
+      }
+
+      carousel-component::after {
+        display: block;
+        content: '';
+        padding-top: 133%; /* 4:3 = height is 75% of width */
+      }
+
+      carousel-component img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+    <carousel-component>
+      <img data-src="../../images/menu/menu-1.jpg">
+      <img data-src="../../images/menu/menu-2.jpg">
+      <img data-src="../../images/menu/menu-3.jpg">
+      <img data-src="../../images/menu/menu-4.jpg">
+      <img data-src="../../images/menu/menu-5.jpg">
+      <img data-src="../../images/menu/menu-6.jpg">
+      <img data-src="../../images/menu/menu-7.jpg">
+    </carousel-component>
+  </template>
+
+  <script>
+    /**
+     * `carousel-component`
+     * responsive carousel component
+     */
+    class SunfireMenu extends Polymer.Element {
+      static get is() { return 'sunfire-menu'; }
+      static get properties() {
+        return {
+        };
+      }
+    }
+
+    window.customElements.define(SunfireMenu.is, SunfireMenu);
+  </script>
+</dom-module>

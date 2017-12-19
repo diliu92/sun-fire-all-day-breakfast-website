@@ -1,0 +1,7 @@
+{
+  "name": "sunFireAllDayBreakfast",
+  "short_name": "SunFire",
+  "description": "Sun Fire All Day Breakfast Website",
+  "start_url": "/",
+  "display": "standalone"
+}

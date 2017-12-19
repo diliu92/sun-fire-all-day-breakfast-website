@@ -1,0 +1,66 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="sunfire-gallery">
+  <template>
+    <style>
+      :host {
+        width: 100%;
+        min-height: calc(100vh - 171px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      carousel-component {
+        width: calc(100% - 40px);
+        max-width: 800px;
+        margin: 40px 20px;
+        contain: content;
+      }
+
+      carousel-component::after {
+        display: block;
+        content: '';
+        padding-top: 75%; /* 4:3 = height is 75% of width */
+      }
+
+      carousel-component img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+    <carousel-component>
+      <img data-src="../../images/gallery/1.jpg">
+      <img data-src="../../images/gallery/2.jpg">
+      <img data-src="../../images/gallery/3.jpg">
+      <img data-src="../../images/gallery/4.jpg">
+      <img data-src="../../images/gallery/5.jpg">
+      <img data-src="../../images/gallery/7.jpg">
+      <img data-src="../../images/gallery/8.jpg">
+      <img data-src="../../images/gallery/9.jpg">
+      <img data-src="../../images/gallery/10.jpg">
+      <img data-src="../../images/gallery/e1.jpg">
+      <img data-src="../../images/gallery/e2.jpg">
+      <img data-src="../../images/gallery/e3.jpg">
+      <img data-src="../../images/gallery/f1.jpg">
+      <img data-src="../../images/gallery/f2.jpg">
+    </carousel-component>
+  </template>
+
+  <script>
+    /**
+     * `carousel-component`
+     * responsive carousel component
+     */
+    class SunfireGallery extends Polymer.Element {
+      static get is() { return 'sunfire-gallery'; }
+      static get properties() {
+        return {
+        };
+      }
+    }
+
+    window.customElements.define(SunfireGallery.is, SunfireGallery);
+  </script>
+</dom-module>

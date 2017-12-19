@@ -1,0 +1,126 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="menu-component">
+  <template>
+    <style>
+      :host {
+        font-family: 'Helvetica', sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        display: block;
+        box-sizing: border-box;
+      }
+      /*wall: F9D189*/
+      /* Add a black background color to the top navigation */
+      .menu-bar {
+        background-color: #fd9021;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        height: 100%;
+        width: 100%;
+      }
+
+      /* Style the links inside the navigation bar */
+      .menu-bar a {
+        display: inline-block;
+        color: #cee3ba;
+        text-align: center;
+        padding: 14px 16px 10px 16px;
+        text-decoration: none;
+        border-bottom: 4px #fd9021 solid;
+      }
+
+      /* Change the color of links on hover */
+      .menu-bar a:hover {
+        background-color: #ffeac4;
+        color: #4b7c46;
+        border-bottom: 4px #ffeac4 solid;
+      }
+
+      /* Add an active class to highlight the current page */
+      a.active {
+        color: #4b7c46;
+        border-bottom: 4px #4b7c46 solid;
+      }
+
+      /* Hide the link that should open and close the menu-bar on small screens */
+      .menu-bar .icon {
+        background-color: #fd9021;
+        height: 23px;
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the menu-bar (.icon) */
+      @media screen and (max-width: 640px) {
+        .menu-bar {
+          justify-content: space-between;
+        }
+        .menu-bar a:not(.active) {
+          display: none;
+        }
+        .menu-bar a.icon {
+          float: right;
+          display: block;
+        }
+
+        /* The "responsive" class is added to the menu-bar with JavaScript when the user clicks on the icon. This class makes the menu-bar look good on small screens (display the links vertically instead of horizontally) */
+        .menu-bar.responsive-show {
+          flex-direction: column;
+        }
+        .menu-bar.responsive-show a.icon {
+          display: block;
+        }
+        .menu-bar.responsive-show a {
+          float: none;
+          display: block;
+          text-align: left;
+        }
+      }
+    </style>
+    <div class="menu-bar">
+      <a id="home" href="home">Home</a>
+      <a id="menu" href="menu">Menu</a>
+      <a id="gallery" href="gallery">Gallery</a>
+      <a id="contact" href="contact">Contact</a>
+      <a class="icon" on-click="_toggleMenu">&#9776;</a>
+    </div>
+  </template>
+å
+  <script>
+    /**
+     * `menu-component`
+     * responsive menu component
+     */
+    class MenuComponent extends Polymer.Element {
+      static get is() { return 'menu-component'; }
+      static get properties() {
+        return {
+          selected: {
+            type: String,
+            observer: '_selectedChanged'
+          }
+        };
+      }
+
+      _selectedChanged(nv, ov) {
+        if (nv !== ov) {
+          if (ov) {
+            Polymer.dom(this.root).querySelector('#'+ov).classList.remove('active');
+          }
+          Polymer.dom(this.root).querySelector('#'+nv).classList.add('active');
+        }
+      }
+
+      _toggleMenu(e) {
+        e.currentTarget.parentElement.classList.toggle('responsive-show');
+      }
+    }
+
+    window.customElements.define(MenuComponent.is, MenuComponent);
+  </script>
+</dom-module>
