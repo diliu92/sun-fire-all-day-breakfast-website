@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-  <link rel="import" href="../carousel-component/carousel-component.html">
+<link rel="import" href="../../bower_components/paper-cards/paper-card.html">
+<link rel="import" href="../carousel-component/carousel-component.html">
 
 <dom-module id="sunfire-home">
   <template>
@@ -10,39 +11,114 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        --carousel-component-button-color: #4b7c46;
       }
+
       carousel-component {
-        width: calc(100% - 40px);
-        max-width: 800px;
-        margin: 40px 20px;
+        width: calc(100% - 80px);
+        max-width: 840px;
+        min-width: 300px;
+        margin: 40px 20px 20px 20px;
         contain: content;
       }
 
       carousel-component::after {
         display: block;
         content: '';
-        padding-top: 75%; /* 4:3 = height is 75% of width */
+        padding-top: 30%; /* height is 30% of width */
       }
 
       carousel-component img {
         position: absolute;
-        width: 100%;
+        left: 50px;
+        width: calc(100% - 100px);
         height: 100%;
       }
+
+      .cards-container {
+        width: calc(100% - 180px);
+        max-width: 740px;
+        min-width: 200px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-bottom: 20px;
+      }
+
+      .card-content {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      paper-card {
+        width: 30%;
+        height: auto;
+        min-width: 200px;
+        margin: 20px 0px;
+        box-shadow: none;
+      }
+
+      .price {
+        padding-left: 5px;
+      }
+
+      @media (max-width: 860px) {
+        paper-card {
+          width: 47%;
+        }
+      }
+
+
+      @media (max-width: 640px) {
+
+        paper-card {
+          width: 100%;
+        }
+      }
+
     </style>
 
     <carousel-component>
-      <img data-src="../../images/home/home-1.jpg">
-      <img data-src="../../images/home/home-2.jpg">
-      <img data-src="../../images/home/home-3.jpg">
+      <img data-src="http://static1.livemore.biotherm.com/articles/5/13/45/@/2285--getty-images-article_landscape-2.jpg">
+      <img data-src="http://static1.livemore.biotherm.com/articles/5/13/45/@/2285--getty-images-article_landscape-2.jpg">
+      <img data-src="http://static1.livemore.biotherm.com/articles/5/13/45/@/2285--getty-images-article_landscape-2.jpg">
     </carousel-component>
+
+    <div class="cards-container">
+      <paper-card image="http://static1.livemore.biotherm.com/articles/5/13/45/@/2285--getty-images-article_landscape-2.jpg">
+        <div class="card-content">
+          <span>Breakfast Special<br>Monday to Sunday 7-10am</span> <span class="price">$5.99</span>
+        </div>
+      </paper-card>
+      <paper-card image="http://static1.livemore.biotherm.com/articles/5/13/45/@/2285--getty-images-article_landscape-2.jpg" >
+        <div class="card-content">
+          <span>Crab Meat Sandwich</span> <span class="price">$7.99</span>
+        </div>
+      </paper-card>
+      <paper-card image="http://static1.livemore.biotherm.com/articles/5/13/45/@/2285--getty-images-article_landscape-2.jpg" >
+        <div class="card-content">
+          <span>Classic Burger</span> <span class="price">$8.99</span>
+        </div>
+      </paper-card>
+      <paper-card image="http://static1.livemore.biotherm.com/articles/5/13/45/@/2285--getty-images-article_landscape-2.jpg" >
+        <div class="card-content">
+          <span>Chunky Monkey</span> <span class="price">$9.99</span>
+        </div>
+      </paper-card>
+      <paper-card image="http://static1.livemore.biotherm.com/articles/5/13/45/@/2285--getty-images-article_landscape-2.jpg" >
+        <div class="card-content">
+          <span>Avocado Garden Salad</span> <span class="price">$10.99</span>
+        </div>
+      </paper-card>
+      <paper-card image="http://static1.livemore.biotherm.com/articles/5/13/45/@/2285--getty-images-article_landscape-2.jpg" >
+        <div class="card-content">
+          <span>Crab Meat & Provolone Omelette</span> <span class="price">$11.99</span>
+        </div>
+      </paper-card>
+    </div>
   </template>
 
   <script>
-    /**
-     * `carousel-component`
-     * responsive carousel component
-     */
     class SunfireHome extends Polymer.Element {
       static get is() { return 'sunfire-home'; }
       static get properties() {

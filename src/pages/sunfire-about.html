@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<dom-module id="sunfire-gallery">
+<dom-module id="sunfire-about">
   <template>
     <style>
       :host {
@@ -9,10 +9,24 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        --carousel-component-button-color: #4b7c46;
+        font-family: 'Helvetica', sans-serif;
       }
+      
+      .description {
+        width: calc(100% - 180px);
+        max-width: 740px;
+        min-width: 200px;
+        margin-top: 20px;
+      }
+      .description div {
+        margin-top: 20px; 
+      }
+
       carousel-component {
-        width: calc(100% - 40px);
-        max-width: 800px;
+        width: calc(100% - 80px);
+        max-width: 840px;
+        min-width: 300px;
         margin: 40px 20px;
         contain: content;
       }
@@ -25,10 +39,20 @@
 
       carousel-component img {
         position: absolute;
-        width: 100%;
+        left: 50px;
+        width: calc(100% - 100px);
         height: 100%;
       }
     </style>
+
+    <div class="description"> 
+      <div> 
+        Sun Fire All Day Breakfast is the new take on breakfast! Our casual dining restaurants provide the perfect ambiance for enjoying a delicious twist on the classic breakfast, brunch, or lunch. We welcome family and friends to eat in or take out.
+      </div>
+      <div>
+        The Sun Fire All Day Breakfast concept is unique and inviting, perfect for those who want to provide a breakfast experience that goes above and beyond the traditional, all at an affordable price. 
+      </div>
+    </div>
 
     <carousel-component>
       <img data-src="../../images/gallery/1.jpg">
@@ -49,18 +73,14 @@
   </template>
 
   <script>
-    /**
-     * `carousel-component`
-     * responsive carousel component
-     */
-    class SunfireGallery extends Polymer.Element {
-      static get is() { return 'sunfire-gallery'; }
+    class SunfireAbout extends Polymer.Element {
+      static get is() { return 'sunfire-about'; }
       static get properties() {
         return {
         };
       }
     }
 
-    window.customElements.define(SunfireGallery.is, SunfireGallery);
+    window.customElements.define(SunfireAbout.is, SunfireAbout);
   </script>
 </dom-module>

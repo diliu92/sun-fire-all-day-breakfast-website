@@ -6,7 +6,7 @@
 <link rel="import" href="./carousel-component/carousel-component.html">
 <link rel="import" href="./pages/sunfire-home.html">
 <link rel="import" href="./pages/sunfire-menu.html">
-<link rel="import" href="./pages/sunfire-gallery.html">
+<link rel="import" href="./pages/sunfire-about.html">
 <link rel="import" href="./pages/sunfire-contact.html">
 <link rel="import" href="./menu-component/menu-component.html">
 
@@ -14,6 +14,7 @@
   <template>
     <style>
       :host {
+        font-family: 'Helvetica', sans-serif;
         display: block;
         height: 100%;
       }
@@ -23,7 +24,9 @@
         let: 0px;
         height: 120px;
         width: 100%;
-        background-image: linear-gradient(#ffeac4, #ffffff);
+        background-image: url("../images/header_background.png");
+        background-size: 300px 120px;
+        background-repeat: repeat-x;
         display: flex;
         justify-content: center;
         z-index: 2;
@@ -44,9 +47,20 @@
 
       iron-pages {
         margin-top:171px;
-        height: calc(100% - 175px);
+        height: calc(100% - 171px);
         background-image: linear-gradient(#ffffff, #cee3ba);
         z-index: 0;
+      }
+
+      .footer {
+        border-top: 1px solid #4b7c46;
+        height: 10px;
+        background-color: #cee3ba;
+        color: #4b7c46;
+        font-size: 10px;
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
       }
 
       @media (max-width: 500px) {
@@ -61,6 +75,7 @@
         }
         iron-pages {
           margin-top:121px;
+          height: calc(100% - 121px);
         }
       }
     </style>
@@ -84,9 +99,13 @@
       attr-for-selected="name">
       <sunfire-home name='home'></sunfire-home>
       <sunfire-menu name='menu'></sunfire-menu>
-      <sunfire-gallery name='gallery'></sunfire-gallery>
+      <sunfire-about name='about'></sunfire-about>
       <sunfire-contact name='contact'></sunfire-contact>
     </iron-pages>
+
+    <div class="footer"> 
+      © Copyright 2018. SunFire All Day Breakfast. All rights reserved.
+    </div>
   </template>
 
   <script>
@@ -116,7 +135,7 @@
       _routePageChanged(page) {
         // If no page was found in the route data, page will be an empty string.
         // Default to 'home' in that case.
-        if (!page || ['home', 'menu', 'gallery', 'contact'].indexOf(page) < 0) {
+        if (!page || ['home', 'menu', 'about', 'contact'].indexOf(page) < 0) {
           this.page = 'home';
         } else {
           this.page = page;

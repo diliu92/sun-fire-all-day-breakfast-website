@@ -9,10 +9,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        --carousel-component-button-color: #4b7c46;
       }
       carousel-component {
-        width: calc(100% - 40px);
-        max-width: 800px;
+        width: calc(100% - 80px);
+        max-width: 840px;
+        min-width: 300px;
         margin: 40px 20px;
         contain: content;
       }
@@ -25,7 +27,8 @@
 
       carousel-component img {
         position: absolute;
-        width: 100%;
+        left: 50px;
+        width: calc(100% - 100px);
         height: 100%;
       }
     </style>
@@ -42,10 +45,6 @@
   </template>
 
   <script>
-    /**
-     * `carousel-component`
-     * responsive carousel component
-     */
     class SunfireMenu extends Polymer.Element {
       static get is() { return 'sunfire-menu'; }
       static get properties() {

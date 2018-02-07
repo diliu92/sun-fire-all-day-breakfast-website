@@ -33,7 +33,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         line-height: 50px;
         border: none;
         background: none;
-        color: #EEE;
+        color: var(--carousel-component-button-color);
         font-size: 50px;
         font-weight: bold;
         opacity: 0.8;
@@ -61,8 +61,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <slot></slot>
     </div>
 
-    <button id="prevBtn" on-click="previous">&#x276E;</button>
-    <button id="nextBtn" on-click="next">&#x276F;</button>
+    <button class="carousel-buttons" id="prevBtn" on-click="previous">&#x276E;</button>
+    <button class="carousel-buttons" id="nextBtn" on-click="next">&#x276F;</button>
 
   </template>
 
