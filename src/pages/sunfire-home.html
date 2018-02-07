@@ -12,13 +12,23 @@
         flex-direction: column;
         align-items: center;
         --carousel-component-button-color: #4b7c46;
+        color: #4b7c46;
+      }
+      .description {
+        width: calc(100% - 180px);
+        max-width: 940px;
+        min-width: 200px;
+        margin-top: 10px;
+      }
+      .description div {
+        margin-top: 20px; 
       }
 
       carousel-component {
         width: calc(100% - 80px);
-        max-width: 840px;
+        max-width: 1040px;
         min-width: 300px;
-        margin: 40px 20px 20px 20px;
+        margin: 30px 20px 20px 20px;
         contain: content;
       }
 
@@ -32,12 +42,15 @@
         position: absolute;
         left: 50px;
         width: calc(100% - 100px);
-        height: 100%;
+        height: calc(100% - 4px);
+        box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+                    0 1px 8px 0 rgba(0, 0, 0, 0.12),
+                    0 3px 3px -2px rgba(0, 0, 0, 0.4);
       }
 
       .cards-container {
         width: calc(100% - 180px);
-        max-width: 740px;
+        max-width: 940px;
         min-width: 200px;
         display: flex;
         justify-content: space-between;
@@ -55,7 +68,6 @@
         height: auto;
         min-width: 200px;
         margin: 20px 0px;
-        box-shadow: none;
       }
 
       .price {
